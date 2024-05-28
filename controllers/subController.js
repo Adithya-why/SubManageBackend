@@ -59,5 +59,16 @@ exports.update_sub = asyncHandler(async(req,res)=>{
     console.log("Updated");
 
     res.json({ms:"Updated", nsub: nsub});
+});
+
+
+
+//delete a specific sub
+
+exports.delete_sub = asyncHandler(async (req,res)=>{
+
+    await Subscription.findByIdAndDelete(req.params.id);
+
+    res.json({deleted: "true"});
 })
 

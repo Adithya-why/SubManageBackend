@@ -20,4 +20,9 @@ Router.post("/", subController.create_sub);
 //update a sub
 Router.put("/:id", subController.update_sub);
 
+
+
+//delete a sub
+Router.delete("/:id",subController.delete_sub);
+
 module.exports = Router;
