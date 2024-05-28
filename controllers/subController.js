@@ -19,8 +19,19 @@ exports.create_sub = asyncHandler(async (req,res)=>{
 
     await sub.save();
 
-    console.log(sub);
-    res.send(sub);
+    
+    res.json(sub);
+});
+
+
+
+//find all subs
+
+
+exports.findall_sub = asyncHandler(async (req,res)=>{
+    let subs = await Subscription.find();
+
+    res.json({subs: subs,msg: "fineyall"});
 });
 
 

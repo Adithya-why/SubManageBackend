@@ -5,10 +5,8 @@ let subController = require("../controllers/subController");
 //main page of the app
 //links appropriate controllers to routes
 
-
-Router.get("/",(req,res,next)=>{
-    res.send("You are in sub page")
-});
+//get all subs
+Router.get("/", subController.findall_sub);
 
 
 //create new sub
