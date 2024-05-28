@@ -1,13 +1,15 @@
 const express = require("express")
 let Router = express.Router();
 
+let passport = require("passport");
+
 let subController = require("../controllers/subController");
 let userController = require("../controllers/userController");
 //main page of the app
 //links appropriate controllers to routes
 
 //get all subs
-Router.get("/", subController.findall_sub);
+Router.get("/",passport.authenticate('jwt',{session: false}) , subController.findall_sub);
 
 //get a specific sub
 Router.get("/:id",subController.find_sub);

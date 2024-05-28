@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require("mongoose");
+let passport = require("passport");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -13,6 +14,7 @@ let subscriptionRouter = require("./routes/subscription");
 
 
 require("dotenv").config();
+require("./controllers/passport")(passport);
 
 var app = express();
 
@@ -27,6 +29,7 @@ async function main(){
   console.log("Connected successfully");
 }
 main().catch((err) => console.log(err));
+
 
 
 
