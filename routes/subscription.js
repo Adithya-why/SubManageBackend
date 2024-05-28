@@ -2,6 +2,7 @@ const express = require("express")
 let Router = express.Router();
 
 let subController = require("../controllers/subController");
+let userController = require("../controllers/userController");
 //main page of the app
 //links appropriate controllers to routes
 
@@ -16,13 +17,15 @@ Router.get("/:id",subController.find_sub);
 Router.post("/", subController.create_sub);
 
 
-
 //update a sub
 Router.put("/:id", subController.update_sub);
 
 
-
 //delete a sub
 Router.delete("/:id",subController.delete_sub);
+
+
+//register a new user
+Router.post("/login",userController.register_user);
 
 module.exports = Router;
