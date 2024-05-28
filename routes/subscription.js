@@ -12,11 +12,11 @@ let userController = require("../controllers/userController");
 Router.get("/",passport.authenticate('jwt',{session: false}) , subController.findall_sub);
 
 //get a specific sub
-Router.get("/:id",subController.find_sub);
+Router.get("/:id",passport.authenticate('jwt',{session: false}),subController.find_sub);
 
 
 //create new sub
-Router.post("/", subController.create_sub);
+Router.post("/", passport.authenticate('jwt',{session: false}),subController.create_sub);
 
 
 //update a sub

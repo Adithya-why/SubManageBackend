@@ -14,7 +14,7 @@ exports.create_sub = asyncHandler(async (req,res)=>{
         price: req.body.price,
         startDate: req.body.startDate,
         duration: req.body.duration,
-        user: req.body.user,
+        user: req.user._id,
     });
 
     console.log(sub);
@@ -51,7 +51,7 @@ exports.update_sub = asyncHandler(async(req,res)=>{
         price: req.body.price,
         startDate: req.body.startDate,
         duration: req.body.duration,
-        user: req.body.user,
+        user: req.user._id,
         _id: req.params.id,
     });
 
