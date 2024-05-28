@@ -26,6 +26,10 @@ Router.delete("/:id",subController.delete_sub);
 
 
 //register a new user
-Router.post("/login",userController.register_user);
+Router.post("/register",userController.register_user);
+
+
+//login
+Router.post("/login", userController.login_user)
 
 module.exports = Router;
