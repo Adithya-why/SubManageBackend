@@ -8,6 +8,9 @@ let subController = require("../controllers/subController");
 //get all subs
 Router.get("/", subController.findall_sub);
 
+//get a specific sub
+Router.get("/:id",subController.find_sub);
+
 
 //create new sub
 Router.post("/", subController.create_sub);
