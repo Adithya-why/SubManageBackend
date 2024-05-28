@@ -16,4 +16,8 @@ Router.get("/:id",subController.find_sub);
 Router.post("/", subController.create_sub);
 
 
+
+//update a sub
+Router.put("/:id", subController.update_sub);
+
 module.exports = Router;

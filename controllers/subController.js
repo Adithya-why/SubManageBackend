@@ -17,6 +17,8 @@ exports.create_sub = asyncHandler(async (req,res)=>{
         user: req.body.user,
     });
 
+    console.log(sub);
+
     await sub.save();
 
     
@@ -42,4 +44,20 @@ exports.find_sub = asyncHandler(async (req,res)=>{
 });
 
 
+//update a specifc sub
+exports.update_sub = asyncHandler(async(req,res)=>{
+    let sub = new Subscription({
+        name: req.body.name,
+        price: req.body.price,
+        startDate: req.body.startDate,
+        duration: req.body.duration,
+        user: req.body.user,
+        _id: req.params.id,
+    });
+
+    let nsub = await Subscription.findByIdAndUpdate(req.params.id,sub,{});
+    console.log("Updated");
+
+    res.json({ms:"Updated", nsub: nsub});
+})
 
