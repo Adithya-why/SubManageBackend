@@ -20,11 +20,11 @@ Router.post("/", passport.authenticate('jwt',{session: false}),subController.cre
 
 
 //update a sub
-Router.put("/:id", subController.update_sub);
+Router.put("/:id",passport.authenticate('jwt',{session: false}), subController.update_sub);
 
 
 //delete a sub
-Router.delete("/:id",subController.delete_sub);
+Router.delete("/:id", passport.authenticate('jwt',{session: false}),subController.delete_sub);
 
 
 //register a new user
