@@ -55,7 +55,7 @@ exports.login_user = asyncHandler(async (req,res)=>{
     //user not found
     if(!user){
 
-        res.json({msg: "No user Found"});
+        res.json({msg: "No user Found", login:0});
     }
 
     else{
@@ -80,12 +80,12 @@ exports.login_user = asyncHandler(async (req,res)=>{
 
             console.log("Token created");
 
-            res.json({user: user, token: "Bearer "+token});
+            res.json({user: user, token: "Bearer "+token, login:1});
         }
 
 
         else{
-            res.json({msg: "Wrong password buuuuuud"});
+            res.json({msg: "Wrong password buuuuuud", login:0});
         }
     }
 })
