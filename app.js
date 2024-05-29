@@ -6,6 +6,8 @@ var logger = require('morgan');
 const mongoose = require("mongoose");
 let passport = require("passport");
 
+let cors = require("cors");
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 let subscriptionRouter = require("./routes/subscription");
@@ -17,6 +19,10 @@ require("dotenv").config();
 require("./controllers/passport")(passport);
 
 var app = express();
+
+//cors setup
+
+app.use(cors());
 
 
 
