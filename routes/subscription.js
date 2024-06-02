@@ -34,4 +34,10 @@ Router.post("/register",userController.register_user);
 //login
 Router.post("/login", userController.login_user)
 
+
+//jwt login
+//send the user object back
+//jwt already there
+Router.post("/loginjwt", passport.authenticate('jwt',{session: false}), userController.login_jwt);
+
 module.exports = Router;

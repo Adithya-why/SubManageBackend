@@ -88,4 +88,16 @@ exports.login_user = asyncHandler(async (req,res)=>{
             res.json({msg: "Wrong password buuuuuud", login:0});
         }
     }
+});
+
+
+//used for sso
+//used for login with jwt
+//user has jwt but no username and password
+//simply send the corresponding user object back
+exports.login_jwt = asyncHandler(async (req,res)=>{
+    let user = req.user;
+
+
+    res.json({msg:"Login success sso", user: user});
 })
