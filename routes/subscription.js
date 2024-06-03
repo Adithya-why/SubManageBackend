@@ -8,6 +8,7 @@ let userController = require("../controllers/userController");
 
 
 let userValidator = require("../validators/userValidator");
+let subValidator = require("../validators/subValidator");
 //main page of the app
 //links appropriate controllers to routes
 
@@ -19,11 +20,12 @@ Router.get("/:id",passport.authenticate('jwt',{session: false}),subController.fi
 
 
 //create new sub
-Router.post("/", passport.authenticate('jwt',{session: false}),subController.create_sub);
+//uses validator
+Router.post("/", passport.authenticate('jwt',{session: false}), subValidator.validate_sub , subController.create_sub);
 
 
 //update a sub
-Router.put("/:id",passport.authenticate('jwt',{session: false}), subController.update_sub);
+Router.put("/:id",passport.authenticate('jwt',{session: false}), subValidator.validate_sub , subController.update_sub);
 
 
 //delete a sub
