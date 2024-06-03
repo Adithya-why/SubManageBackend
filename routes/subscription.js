@@ -5,6 +5,9 @@ let passport = require("passport");
 
 let subController = require("../controllers/subController");
 let userController = require("../controllers/userController");
+
+
+let userValidator = require("../validators/userValidator");
 //main page of the app
 //links appropriate controllers to routes
 
@@ -28,7 +31,8 @@ Router.delete("/:id", passport.authenticate('jwt',{session: false}),subControlle
 
 
 //register a new user
-Router.post("/register",userController.register_user);
+//uses validation
+Router.post("/register", userValidator.new_user ,userController.register_user);
 
 
 //login
