@@ -6,6 +6,7 @@ let Schema = mongoose.Schema;
 let User = new Schema({
     username: String,
     p_hash: String,
+    email: String,
 });
 
 

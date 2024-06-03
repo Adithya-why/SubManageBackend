@@ -17,10 +17,24 @@ exports.register_user = asyncHandler(async (req,res)=>{
         if(err){
             console.log("HAshing error");
         }else{
+
+            //check if user with same username or email id exists
+
+            let prevUser = await User.findOne({$or: [{username: req.body.username}, {email: req.body.email}]});
+
+            if(prevUser){
+                console.log(prevUser);
+                res.json({msg: "Same username or Email already used"});
+            }
+
+
+
+            else{
             //create use with hashed password
             let user = new User({
                 username: req.body.username,
                 p_hash: hash,
+                email: req.body.email,
             });
 
 
@@ -41,6 +55,7 @@ exports.register_user = asyncHandler(async (req,res)=>{
 
             res.json({user: user, token: "Bearer "+token});
         }
+    }
     }))
 });
 
