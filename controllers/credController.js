@@ -35,5 +35,6 @@ exports.get_cred = asyncHandler(async (req,res)=> {
 //to delete a cred with cred tit
 
 exports.del_cred = asyncHandler(async (req,res)=>{
-    let res = await Credential.findByIdAndDelete(req.params.credid);
+    let cred = await Credential.findByIdAndDelete(req.params.credid);
+    res.json({msg: "Deleted", cred: cred})
 });
